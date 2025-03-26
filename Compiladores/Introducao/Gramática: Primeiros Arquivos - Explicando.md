@@ -28,24 +28,27 @@ int main(int argc, char **argv) {
 
 ```
 
-A unica coisa que vamos fazer eh mexer com o que ta dentro dos dois *%%*
+A unica coisa que vamos fazer É mexer com o que ta dentro dos dois *%%*
 
-```lex "_palavra que queremos encontrar no texto_"   { return _NOMETOKEN_; }```
+ ### _palavra que queremos encontrar no texto_"   { return _NOMETOKEN_; }
+começamos pela palavra que queremos encontrar no texto, a colocamos entre ""
+depois entre {} colocamos o comando
+nesse caso quando encontramos a palavra X retornamos o token NOMETOKEN
 
 **[ \t\n]+** significa espaços, tabulações ou quebras de linha
 
 colocamos ele pra significar _espaços, tabulações ou quebras de linha_
 e depois dizemos ao codigo o que devemos fazer ao encontrar eles
 
-```lex [ \t\n]+    {_ordem_}```
+### [ \t\n]+    {_ordem_}
 
-do mesmo jeito que tinhamso usado no reocnhecimento e agregacao de token:
+do mesmo jeito que tinhamso usado no reconhecimento e agregacao de token:
 
-```lex "_palavra que queremos encontrar no texto_"   { return _NOMETOKEN_; }```
+### "_palavra que queremos encontrar no texto_"   { return _NOMETOKEN_; }
 
 se deixamos as chaves vazias
 
-```lex [ \t\n]+    {}```
+### [ \t\n]+    {}
 
 queremos dizer para ignorar esses caracteres
 
