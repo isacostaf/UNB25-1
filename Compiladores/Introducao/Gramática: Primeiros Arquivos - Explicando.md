@@ -1,7 +1,4 @@
-## Explicando a Gramática do código
-Vamos aprender o que eh cada coisa, o que cada coisa faz
-
-'''lex
+```lex
 %{
 #include "parser.tab.h"
 %}
@@ -19,6 +16,3 @@ Vamos aprender o que eh cada coisa, o que cada coisa faz
 .               { printf("Caractere inválido: %s\n", yytext); }
 
 %%
-''''
-
-eh isso!
