@@ -1,3 +1,6 @@
+## Explicando a Gramática do código
+Vamos aprender o que eh cada coisa, o que cada coisa faz
+
 ```lex
 %{
 #include "parser.tab.h"
@@ -16,3 +19,6 @@
 .               { printf("Caractere inválido: %s\n", yytext); }
 
 %%
+
+```
+pipi popo
