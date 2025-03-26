@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
 
 A unica coisa que vamos fazer É mexer com o que ta dentro dos dois *%%*
 
-<span style="color: pink;">_palavra que queremos encontrar no texto_"   { return _NOMETOKEN_; }</span>
+ ### _palavra que queremos encontrar no texto_"   { return _NOMETOKEN_; }
 começamos pela palavra que queremos encontrar no texto, a colocamos entre ""
 depois entre {} colocamos o comando
 nesse caso quando encontramos a palavra X retornamos o token NOMETOKEN
@@ -40,16 +40,15 @@ nesse caso quando encontramos a palavra X retornamos o token NOMETOKEN
 colocamos ele pra significar _espaços, tabulações ou quebras de linha_
 e depois dizemos ao codigo o que devemos fazer ao encontrar eles
 
-<span style="color: pink;">[ \t\n]+    {_ordem_}</span>
-
+### [ \t\n]+    {_ordem_}
 
 do mesmo jeito que tinhamso usado no reconhecimento e agregacao de token:
 
-<span style="color: pink;">"_palavra que queremos encontrar no texto_"   { return _NOMETOKEN_; }</span>
+### "_palavra que queremos encontrar no texto_"   { return _NOMETOKEN_; }
 
 se deixamos as chaves vazias
 
-<span style="color: pink;">[ \t\n]+    {}</span>
+### [ \t\n]+    {}
 
 queremos dizer para ignorar esses caracteres
 
