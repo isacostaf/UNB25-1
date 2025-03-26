@@ -31,7 +31,9 @@ int main(int argc, char **argv) {
 A unica coisa que vamos fazer É mexer com o que ta dentro dos dois *%%*
 
 ```"Hello"    { return HELLO; }  /* Se encontrar "Hello", retorna o token HELLO */```
+
 **_palavra que queremos encontrar no texto_"   { return _NOMETOKEN_; }**
+
 começamos pela palavra que queremos encontrar no texto, a colocamos entre ""
 depois entre {} colocamos o comando
 nesse caso quando encontramos a palavra X retornamos o token NOMETOKEN
@@ -42,6 +44,7 @@ colocamos ele pra significar _espaços, tabulações ou quebras de linha_
 e depois dizemos ao codigo o que devemos fazer ao encontrar eles
 
 ```[ \t\n]+    { /* Ignora espaços e quebras de linha */ }```
+
 **[ \t\n]+    {_ordem_}**
 
 do mesmo jeito que tinhamos usado no reconhecimento e agregacao de token:
