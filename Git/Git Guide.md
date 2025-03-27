@@ -40,4 +40,28 @@ Eu faço então:
 - O administrador vai olhar e aceitar fazer o merge - ou não
 - Tudo eh feito pela propria pagina
 
+## Eu já passei:
+
+#### Main local e remota tem commits diferentes, e ai quem ganha?
+O erro que você está recebendo ocorre porque o seu repositório local (na branch main) e o repositório remoto (também na main) têm commits divergentes. Ou seja, as duas versões estão diferentes e o Git precisa saber como lidar com essas diferenças para integrar as alterações.
+
+Como Resolver:
+Escolher uma estratégia de merge: Você precisa decidir se deseja fazer um merge ou um rebase para resolver essa divergência.
+
+Merge: Vai criar um commit de merge unindo as alterações das duas branches.
+
+```git config pull.rebase false```
+
+Rebase: Vai tentar aplicar suas alterações por cima das alterações remotas, reescrevendo o histórico.
+
+git config pull.rebase true
+
+Depois de escolher a estratégia de reconciliação, você pode executar o comando git pull novamente.
+
+Se você escolheu **merge**, então simplesmente execute: ```git pull```
+
+Se escolheu rebase, **execute**: ```git pull --rebase```
+
+**Fazer o Push:** Após resolver a divergência (com merge ou rebase), o próximo passo é fazer o push das alterações locais para o repositório remoto:
+```git push```
 
