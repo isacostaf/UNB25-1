@@ -1,5 +1,9 @@
-## Explicando a Gramática do código
+# Explicando a Gramática do código
 Vamos aprender o que eh cada coisa, o que cada coisa faz
+
+## hello.l
+**a parte lexica do codigo**
+_codificação para tokens_
 
 ```lex
 %{
@@ -68,3 +72,79 @@ nesse codigo então estamos pedindo que ele ignore espaços, tabulações e qual
 **[ \t\n]+:** O Flex vai passar pelos espaços e não vai fazer nada com eles, vai apenas pular para o próximo caractere, que é W.
 
 **.:** O Flex vai passar pelo !, que não corresponde a "Hello" nem "World", e como não há ação associada, ele apenas descarte esse caractere.
+
+## hello.y
+**analisador sintatico do codigo**
+_definir a gramatica: o gato come o rato - o come rato gato_
+
+```#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int yylex(void);  // Declara a função yylex() gerada pelo Flex
+void yyerror(const char *s);  // Declara a função de erro
+%}
+
+// Declaraçoes de variaveis:
+%token HELLO   // Define o token HELLO, estamos apenas dizendo ao bison que podemos receber um token chamado HELLO, esse nome desse token tem que ser o mesmo nome do token enviado(return) em hello.l
+%token WORLD   // Define o token WORLD, o mesmo
+
+// Agora começa a brincadeira:
+%%
+
+start:
+    HELLO WORLD { printf("Hello, World!\n"); }   // Quando encontrar "HELLO" seguido de "WORLD", imprime a mensagem
+  ;
+
+%%
+
+void yyerror(const char *s) {
+    fprintf(stderr, "Erro sintático: %s\n", s);   // Imprime a mensagem de erro em caso de falha na análise sintática
+}
+```
+
+```%token HELLO   // Define o token HELLO```
+
+estamos declarando e apenas dizendo ao bison que podemos receber um token chamado HELLO, esse nome desse token tem que ser o mesmo nome do token enviado(return) em hello.l
+
+**No Flex, você pode definir qualquer nome para os tokens, mas no Bison esses nomes precisam ser os mesmos.**
+
+essa parte em hello.l:
+```"Hello"    { return HELLO; }  /* Se encontrar "Hello", retorna o token HELLO */```
+
+tem que ter o mesmo nome dessa parte em hello.y
+```%token HELLO   // Define o token HELLO```
+
+porque estamos primeiro dizendo **o que vamos enviar** ao ver a palavra x
+e depois estamos declarando que **podemos receber essa coisa**
+
+```
+%%
+
+start:
+    HELLO WORLD { printf("Hello, World!\n"); }   // Quando encontrar "HELLO" seguido de "WORLD", imprime a mensagem
+  ;
+
+%%
+```
+
+estamos dizendo que quando encontrarmos os tokens **nessa ordem** fazemos tal coisa, que no caso é imprimir uma mensagem
+
+```
+void yyerror(const char *s) {
+    fprintf(stderr, "Erro sintático: %s\n", s);   // Imprime a mensagem de erro em caso de falha na análise sintática
+}
+```
+
+mensagem de erro: se der erro vai aparecer isso!
+
+```
+int yylex(void);  // Declara a função yylex() gerada pelo Flex
+void yyerror(const char *s);  // Declara a função de erro
+```
+
+💡 **Por que declaramos int yylex(void); em hello.y?**
+Porque o Bison precisa saber que essa função existe, já que ele a chama para receber tokens. Essa linha só declara a função, mas o código real dela está no arquivo gerado pelo Flex (lex.yy.c).
+
+💡 **Por que declaramos void yyerror(const char *s); em hello.y?**
+Porque o Bison chama essa função quando encontra um erro, então precisamos garantir que ela está declarada antes de ser usada.
