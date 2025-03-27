@@ -11,3 +11,6 @@ O link deve ser copiado no proprio git do repositorio
 ```git commit -m "Primeiro commit"```
 
 ```git push```
+
+### 3. Branch
+#### 3.1 criar
