@@ -207,17 +207,23 @@ Isso cria:
 ### O que faz cada arquivo?
 
 **hello.tab.c**	
+
 Quem cria: Bison
+
 O que faz: Implementa o analisador sintático em C
 
 
 **hello.tab.h**
+
 Quem cria: Bison
+
 O que faz: Define os tokens que o Flex precisa conhecer
 
 
 **lex.yy.c**
+
 Quem cria: Flex
+
 O que faz: Implementa o analisador léxico em C
  
  
