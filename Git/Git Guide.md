@@ -42,7 +42,7 @@ Eu faço então:
 
 ## Eu já passei:
 
-#### Main local e remota tem commits diferentes, e ai quem ganha?
+#### 1. Main local e remota tem commits diferentes, e ai quem ganha?
 O erro que você está recebendo ocorre porque o seu repositório local (na branch main) e o repositório remoto (também na main) têm commits divergentes. Ou seja, as duas versões estão diferentes e o Git precisa saber como lidar com essas diferenças para integrar as alterações.
 
 Como Resolver:
