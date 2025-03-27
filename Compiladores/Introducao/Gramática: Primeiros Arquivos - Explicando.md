@@ -227,7 +227,9 @@ O que faz: Implementa o analisador léxico em C
 
 Contém a implementação do analisador sintático.
 
+
 Ele define as regras da gramática e chama yylex() para obter tokens do analisador léxico.
+
 
 Esse código verifica se a sequência de tokens faz sentido, de acordo com as regras definidas no hello.y.
 
@@ -237,15 +239,20 @@ Esse código verifica se a sequência de tokens faz sentido, de acordo com as re
 
 Contém as definições dos tokens como HELLO e WORLD.
 
+
 O Flex importa esse arquivo para saber quais tokens pode devolver para o Bison.
+
 
 Sem esse arquivo, o Flex não reconheceria os nomes dos tokens.
 
 
 3️⃣ **lex.yy.c (Código C do Analisador Léxico – Flex)**
 
+
 Contém a implementação do analisador léxico.
 
+
 Ele escaneia o texto de entrada, encontra padrões (Hello, World) e retorna tokens (HELLO, WORLD) para o Bison.
+
 
 Essa função gerada chama-se yylex() e é usada pelo parser (hello.tab.c).
