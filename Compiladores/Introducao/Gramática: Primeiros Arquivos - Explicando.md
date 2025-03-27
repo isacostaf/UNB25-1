@@ -3,6 +3,7 @@ Vamos aprender o que eh cada coisa, o que cada coisa faz
 
 ## hello.l
 **a parte lexica do codigo**
+
 _codificação para tokens_
 
 ```lex
@@ -67,6 +68,7 @@ ele significa _qualquer outro caracter que nao seja _espaços, tabulações ou q
 nesse codigo então estamos pedindo que ele ignore espaços, tabulações e qualquer outro caracter lixo
 
 **Exemplo:**
+
 ```Hello   World!```
 
 **[ \t\n]+:** O Flex vai passar pelos espaços e não vai fazer nada com eles, vai apenas pular para o próximo caractere, que é W.
@@ -75,6 +77,7 @@ nesse codigo então estamos pedindo que ele ignore espaços, tabulações e qual
 
 ## hello.y
 **analisador sintatico do codigo**
+
 _definir a gramatica: o gato come o rato - o come rato gato_
 
 ```#include <stdio.h>
@@ -109,14 +112,17 @@ estamos declarando e apenas dizendo ao bison que podemos receber um token chamad
 
 **No Flex, você pode definir qualquer nome para os tokens, mas no Bison esses nomes precisam ser os mesmos.**
 
-essa parte em hello.l:
+essa parte em **hello.l:**
+
 ```"Hello"    { return HELLO; }  /* Se encontrar "Hello", retorna o token HELLO */```
 
-tem que ter o mesmo nome dessa parte em hello.y
-```%token HELLO   // Define o token HELLO```
+tem que ter o mesmo nome dessa parte em **hello.y:**
+
+```%token HELLO   // declara o token HELLO```
 
 porque estamos primeiro dizendo **o que vamos enviar** ao ver a palavra x
 e depois estamos declarando que **podemos receber essa coisa**
+
 
 ```
 %%
@@ -130,6 +136,7 @@ start:
 
 estamos dizendo que quando encontrarmos os tokens **nessa ordem** fazemos tal coisa, que no caso é imprimir uma mensagem
 
+
 ```
 void yyerror(const char *s) {
     fprintf(stderr, "Erro sintático: %s\n", s);   // Imprime a mensagem de erro em caso de falha na análise sintática
@@ -138,13 +145,56 @@ void yyerror(const char *s) {
 
 mensagem de erro: se der erro vai aparecer isso!
 
+
 ```
 int yylex(void);  // Declara a função yylex() gerada pelo Flex
 void yyerror(const char *s);  // Declara a função de erro
 ```
 
 💡 **Por que declaramos int yylex(void); em hello.y?**
+
 Porque o Bison precisa saber que essa função existe, já que ele a chama para receber tokens. Essa linha só declara a função, mas o código real dela está no arquivo gerado pelo Flex (lex.yy.c).
 
-💡 **Por que declaramos void yyerror(const char *s); em hello.y?**
+💡 **Por que declaramos void yyerror(const char s); em hello.y?**
+
 Porque o Bison chama essa função quando encontra um erro, então precisamos garantir que ela está declarada antes de ser usada.
+
+**int yylex(void);**
+
+Declara a função yylex(), que o Flex cria para reconhecer tokens
+O Bison chama essa função automaticamente para pegar tokens da entrada
+
+**void yyerror(const char s);**
+
+Declara a função yyerror(), que trata erros sintáticos
+O Bison chama essa função quando encontra um erro
+
+# Como compilar e rodar
+**📌 Passos no terminal:**
+
+
+**1️. Gerar o parser (Bison)**
+
+
+```bison -d hello.y```
+
+Isso cria:
+
+**hello.tab.c** (código C do parser)
+
+**hello.tab.h** (definições dos tokens)
+
+**2. Gerar o analisador léxico (Flex)**
+
+```flex hello.l```
+
+Isso cria:
+**lex.yy.c** (código C do analisador léxico)
+
+**3. Compilar tudo junto**
+
+```gcc -o hello hello.tab.c lex.yy.c -lfl```
+
+**4. Executar:**
+
+```./hello```
