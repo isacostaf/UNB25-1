@@ -184,6 +184,7 @@ Isso cria:
 
 **hello.tab.h** (definições dos tokens)
 
+
 **2. Gerar o analisador léxico (Flex)**
 
 ```flex hello.l```
@@ -191,10 +192,58 @@ Isso cria:
 Isso cria:
 **lex.yy.c** (código C do analisador léxico)
 
+
 **3. Compilar tudo junto**
 
 ```gcc -o hello hello.tab.c lex.yy.c -lfl```
 
+
 **4. Executar:**
 
 ```./hello```
+
+### O que faz cada arquivo?
+
+**hello.tab.c**	
+Quem cria: Bison
+O que faz: Implementa o analisador sintático em C
+
+
+**hello.tab.h**
+Quem cria: Bison
+O que faz: Define os tokens que o Flex precisa conhecer
+
+
+**lex.yy.c**
+Quem cria: Flex
+O que faz: Implementa o analisador léxico em C
+
+
+
+1️⃣ **hello.tab.c (Código C do Parser – Bison)**
+
+
+Contém a implementação do analisador sintático.
+
+Ele define as regras da gramática e chama yylex() para obter tokens do analisador léxico.
+
+Esse código verifica se a sequência de tokens faz sentido, de acordo com as regras definidas no hello.y.
+
+
+2️⃣ **hello.tab.h (Definições dos Tokens – Bison)**
+
+
+Contém as definições dos tokens como HELLO e WORLD.
+
+O Flex importa esse arquivo para saber quais tokens pode devolver para o Bison.
+
+Sem esse arquivo, o Flex não reconheceria os nomes dos tokens.
+
+
+3️⃣ **lex.yy.c (Código C do Analisador Léxico – Flex)**
+
+Contém a implementação do analisador léxico.
+
+Ele escaneia o texto de entrada, encontra padrões (Hello, World) e retorna tokens (HELLO, WORLD) para o Bison.
+
+Essa função gerada chama-se yylex() e é usada pelo parser (hello.tab.c).
