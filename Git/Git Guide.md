@@ -13,4 +13,13 @@ O link deve ser copiado no proprio git do repositorio
 ```git push```
 
 ### 3. Branch
-#### 3.1 criar
+#### 3.1 push em outra branch
+```git push origin nome-da-branch```
+
+#### 3.2 criar e acessar branch
+1. criei a branch no proprio git web
+2. precisamos primeiro baixar as mudanças web para o repositorio - atualizar as info do web com a maquina:
+```git fetch```
+
+3. git checkout agora vamos entrar na branch
+```git checkout gitbranch```
