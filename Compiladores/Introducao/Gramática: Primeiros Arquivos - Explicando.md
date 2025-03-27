@@ -172,6 +172,7 @@ O Bison chama essa função quando encontra um erro
 # Como compilar e rodar
 **📌 Passos no terminal:**
 
+**ATENÇÃO:**  você deve estar dentro da pasta mais dentro de onde estão todos esses arquivos, se estiver em uma pasta mt geral nao vai funcionar.
 
 **1️. Gerar o parser (Bison)**
 
@@ -195,7 +196,8 @@ Isso cria:
 
 **3. Compilar tudo junto**
 
-```gcc -o hello hello.tab.c lex.yy.c -lfl```
+```gcc -o hello hello.tab.c lex.yy.c -ll```
+**Atenção:** eh -ll e não -lfl porque estamos usando um macbook
 
 
 **4. Executar:**
