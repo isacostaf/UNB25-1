@@ -1,6 +1,6 @@
 # Regressão Linear - Código
 
-%%
+```py
 import numpy as np # importa a biblioteca NumPy que trabalha com 
 									 # calculos de matematica e arrays
 									 
@@ -36,4 +36,4 @@ plt.xlabel("Horas de Estudo")
 plt.ylabel("Notas")
 plt.show()
 
-%%
+```
