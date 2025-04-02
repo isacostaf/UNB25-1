@@ -1,10 +1,10 @@
 # Regressão Linear - Código
 
 ```py
-import numpy as np # importa a biblioteca NumPy que trabalha com calculos de matematica e arrays			 
-import matplotlib.pyplot as plt # importa o MatPlotLib que gera gráficos
+import numpy as np # com calculos de matematica e arrays			 
+import matplotlib.pyplot as plt # gera gráficos
 																
-from sklearn.linear_model import LinearRegression # importa a função LinearRegression da biblioteca sklearn, ela pode ser baixada -- não precisamos criar
+from sklearn.linear_model import LinearRegression # ifunção LinearRegression - pode ser baixada, não precisamos criar
 
 # Dados de exemplo
 # Horas de estudo (variável independente)
@@ -45,4 +45,12 @@ from sklearn.linear_model import LinearRegression
 ```import matplotlib.pyplot as plt:``` Importa o Matplotlib, usado para criar gráficos.
 
 ```from sklearn.linear_model import LinearRegression:``` Importa a função LinearRegression da biblioteca sklearn, que é usada para criar o modelo de regressão linear.
+
+
+## 📌 Criando os dados
+python
+Copiar
+Editar
+X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).reshape(-1, 1)
+y = np.array([2, 4, 5, 7, 10, 11, 14, 17, 20])
 
