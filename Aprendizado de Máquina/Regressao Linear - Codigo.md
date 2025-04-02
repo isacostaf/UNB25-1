@@ -1,16 +1,10 @@
 # Regressão Linear - Código
 
 ```py
-import numpy as np # importa a biblioteca NumPy que trabalha com 
-									 # calculos de matematica e arrays
-									 
-import matplotlib.pyplot as plt # importa o MatPlotLib 
-																# que gera gráficos
+import numpy as np # importa a biblioteca NumPy que trabalha com calculos de matematica e arrays			 
+import matplotlib.pyplot as plt # importa o MatPlotLib que gera gráficos
 																
-from sklearn.linear_model import LinearRegression # importa a função
-																									# LinearRegression da biblioteca
-																									# sklearn, ela pode ser baixada
-																									# não precisamos criar
+from sklearn.linear_model import LinearRegression # importa a função LinearRegression da biblioteca sklearn, ela pode ser baixada -- não precisamos criar
 
 # Dados de exemplo
 # Horas de estudo (variável independente)
@@ -35,6 +29,5 @@ plt.title("Relação entre Horas de Estudo e Notas")
 plt.xlabel("Horas de Estudo")
 plt.ylabel("Notas")
 plt.show()
-fjnksjfhkfsik
 
 ```
