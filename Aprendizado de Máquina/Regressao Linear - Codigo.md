@@ -35,5 +35,6 @@ plt.title("Relação entre Horas de Estudo e Notas")
 plt.xlabel("Horas de Estudo")
 plt.ylabel("Notas")
 plt.show()
+fjnksjfhkfsik
 
 ```
