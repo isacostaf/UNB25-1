@@ -48,9 +48,19 @@ from sklearn.linear_model import LinearRegression
 
 
 ## 📌 Criando os dados
-python
-Copiar
-Editar
+```
 X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).reshape(-1, 1)
 y = np.array([2, 4, 5, 7, 10, 11, 14, 17, 20])
+```
+Estamos declarando os valores de X e depois os de Y equivalentes a cada valor de X
 
+```np.array```forma um array ([*array*])
+
+```reshape(-1, 1)```
+transforma o vetor X em uma coluna 2D
+O ```LinearRegression```trabalha com tabelas e não com vetores por isso precisamos usar o ```reshape(-1, 1)``` em X, para transformar ele em uma coluna
+não precisamos usar o reshape em Y porque ja formamos a tabela em X, o programa entende e simplesmente encaixa os valores de y em seus consecutivos lugares de X na tabela que ja foi montada em X
+
+Tambem podemos usar:
+```.T```
+```X = np.array([[1, 2, 3, 4, 5, 6, 7, 8, 9]]).T```
