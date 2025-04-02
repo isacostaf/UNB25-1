@@ -4,10 +4,11 @@
 import numpy as np # com calculos de matematica e arrays			 
 import matplotlib.pyplot as plt # gera gráficos
 																
-from sklearn.linear_model import LinearRegression # ifunção LinearRegression - pode ser baixada, não precisamos criar
+from sklearn.linear_model import LinearRegression # função LinearRegression - pode ser baixada, não precisamos criar
 
-# Dados de exemplo
+# Dados de exemplo - Cria Arrays
 # Horas de estudo (variável independente)
+# Reshape para transformar em coluna - Matriz
 X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).reshape(-1, 1)
 
 # Notas obtidas (variável dependente)
@@ -16,10 +17,11 @@ y = np.array([2, 4, 5, 7, 10, 11, 14, 17, 20])
 # Criando o modelo de regressão linear
 modelo = LinearRegression()
 
-# Treinando o modelo com os dados
+# Treinando o modelo - Calcula b1 e b0
 modelo.fit(X, y)
 
 # Fazendo previsões usando o modelo treinado
+# Guarda na variavel os valores de y da reta
 y_pred = modelo.predict(X)
 
 # Plotando os dados originais e a linha de regressão
@@ -52,15 +54,23 @@ from sklearn.linear_model import LinearRegression
 X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).reshape(-1, 1)
 y = np.array([2, 4, 5, 7, 10, 11, 14, 17, 20])
 ```
-Estamos declarando os valores de X e depois os de Y equivalentes a cada valor de X
 
 ```np.array```forma um array ([*array*])
 
-```reshape(-1, 1)```
-transforma o vetor X em uma coluna 2D
-O ```LinearRegression```trabalha com tabelas e não com vetores por isso precisamos usar o ```reshape(-1, 1)``` em X, para transformar ele em uma coluna
-não precisamos usar o reshape em Y porque ja formamos a tabela em X, o programa entende e simplesmente encaixa os valores de y em seus consecutivos lugares de X na tabela que ja foi montada em X
+```reshape(-1, 1)``` transforma o X em uma coluna
 
-Tambem podemos usar:
-```.T```
-```X = np.array([[1, 2, 3, 4, 5, 6, 7, 8, 9]]).T```
+O LinearRegression só trabalho com matrizes pois é assim que o Machine Learning trabalha, por isso, transformamos X em uma coluna, o Y nao precisa ser transformado pois o porgrama entende que eh um vetor relacionado a X, entao ele so encaixa os Y na tabela ja criada por x em seus respectiovs espacos
+
+**Outra Opção:**
+```X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).T```
+
+
+## 📌 Fazendo Previsões
+```
+y_pred = modelo.predict(X)
+```
+
+```modelo.predict(X)``: Realiza a formula da reta com o valor de cada X, ele já tem os melhores valores de b1 e b0 pois ja os descobriu em *modelo.fit(X, y)*
+```y_pred```: salvamos aqui o valor de cada Y para cada X da reta que passa no meio dos pontos azuis
+
+
