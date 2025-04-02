@@ -31,3 +31,18 @@ plt.ylabel("Notas")
 plt.show()
 
 ```
+
+## 📌 Importação de bibliotecas
+```
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+````
+
+
+```import numpy as np:``` Importa o NumPy, que é uma biblioteca para trabalhar com arrays e fazer cálculos matemáticos.
+
+```import matplotlib.pyplot as plt:``` Importa o Matplotlib, usado para criar gráficos.
+
+```from sklearn.linear_model import LinearRegression:``` Importa a função LinearRegression da biblioteca sklearn, que é usada para criar o modelo de regressão linear.
+
