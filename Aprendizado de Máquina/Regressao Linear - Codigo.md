@@ -17,7 +17,7 @@ y = np.array([2, 4, 5, 7, 10, 11, 14, 17, 20])
 # Criando o modelo de regressão linear
 modelo = LinearRegression()
 
-# Treinando o modelo - Calcula b1 e b0
+# Treinando o modelo
 modelo.fit(X, y)
 
 # Fazendo previsões usando o modelo treinado
@@ -65,12 +65,21 @@ O LinearRegression só trabalho com matrizes pois é assim que o Machine Learnin
 ```X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).T```
 
 
+## 📌 Criando e treinando o modelo de regressão linear
+```
+modelo = LinearRegression()
+modelo.fit(X, y)
+```
+
+```modelo = LinearRegression()```: cria o modelo de regressao linear
+```modelo.fit(X, y)```: calcula os melhores valores pra b0 e b1
+
 ## 📌 Fazendo Previsões
 ```
 y_pred = modelo.predict(X)
 ```
 
-```modelo.predict(X)``: Realiza a formula da reta com o valor de cada X, ele já tem os melhores valores de b1 e b0 pois ja os descobriu em *modelo.fit(X, y)*
+```modelo.predict(X)```: Realiza a formula da reta com o valor de cada X, ele já tem os melhores valores de b1 e b0 pois ja os descobriu em *modelo.fit(X, y)*
 ```y_pred```: salvamos aqui o valor de cada Y para cada X da reta que passa no meio dos pontos azuis
 
 
