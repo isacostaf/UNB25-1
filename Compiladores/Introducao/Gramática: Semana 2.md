@@ -16,6 +16,9 @@ int yyparse(void);
                            mas servirá como exemplo didático) */
                         yylval.intValue = atoi(yytext);
                         return NUM;
+
+                        /* {1,10}
+                        aceita numero de so ate 10 digitos*/
                       }
 
 
@@ -118,14 +121,7 @@ void yyerror(const char *s) {
 ```
 
 
-
-
-
-
-
-
-
-Se tivessemos mais variaveis e regras:
+###Se tivessemos mais variaveis e regras:
 **LEX:**
 
 ```
