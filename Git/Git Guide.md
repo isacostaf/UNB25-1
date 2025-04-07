@@ -40,6 +40,22 @@ Eu faço então:
 - O administrador vai olhar e aceitar fazer o merge - ou não
 - Tudo eh feito pela propria pagina
 
+#### 3.5 Voltar pro atual
+Fiz varias alteracos no meu codigo, mas nao gostei, quero voltar pro jeito que o codigo ta no git
+
+Ver o que mudei
+
+```git status```
+
+Este comando irá restaurar os arquivos rastreados ao seu último estado commitado, descartando todas as alterações locais nesses arquivos:
+
+```git reset --hard```
+
+Se você criou novos arquivos ou diretórios que ainda não foram adicionados ao controle de versão (ou seja, arquivos não rastreados) e deseja removê-los, execute:
+
+```git clean -fd```
+
+
 ## Eu já passei:
 
 #### 1. Main local e remota tem commits diferentes, e ai quem ganha?
