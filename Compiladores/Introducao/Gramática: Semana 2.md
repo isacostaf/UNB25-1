@@ -6,7 +6,7 @@
 int yyparse(void); 
 %}
 
-/* Definições de padrões de token e ações */
+/* Definições de padrões de token e açõess */
 %%
 
 [ \t\n]+              { /* Não faz nada, apenas ignora */ }
