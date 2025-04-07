@@ -199,6 +199,17 @@ Isso cria:
 ```gcc -o hello hello.tab.c lex.yy.c -ll```
 **Atenção:** eh -ll e não -lfl porque estamos usando um macbook
 
+**Erro:**
+isacosta@MacBook-Air-de-Isabelle src % gcc -o hello hello.tab.c lex.yy.c -ll
+hello.l:22:12: error: call to undeclared function 'yyparse'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   22 |     return yyparse();  /* Chama o parser gerado pelo Bison */
+      |            ^
+1 error generated.
+
+Adicione
+```int yyparse(void); ```
+no cabeçalho do arquivo .l
+
 
 **4. Executar:**
 
