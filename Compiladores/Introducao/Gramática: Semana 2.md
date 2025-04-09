@@ -120,6 +120,28 @@ void yyerror(const char *s) {
 }
 ```
 
+### Lista_numero Recursao
+🔁 Exemplo 1: Entrada = 10
+10 é um NUM
+
+Bate com a regra: lista_numeros → NUM
+
+Então lista_numeros = [10]
+
+🔁 Exemplo 2: Entrada = 10 20
+10 → vira lista_numeros (caso base)
+
+Agora tem: lista_numeros NUM → que é 10 20
+
+Então lista_numeros = [10, 20]
+
+🔁 Exemplo 3: Entrada = 10 20 30
+Começa com 10 → vira lista_numeros
+
+Depois: lista_numeros NUM → 10 20
+
+Depois: lista_numeros NUM de novo → 10 20 30
+
 
 ###Se tivessemos mais variaveis e regras:
 **LEX:**
