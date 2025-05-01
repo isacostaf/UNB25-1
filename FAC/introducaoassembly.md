@@ -1,6 +1,7 @@
 # Risc Primeiros Passos
 
-```.data
+```
+.data
 hello: .asciiz "Oi, mundo!\n"
 
 .text
@@ -14,7 +15,8 @@ main:
 ```
 
 ### Bloco .data
-```.data
+```
+.data
 hello: .asciiz "Oi, mundo!\n"
 ```
 
