@@ -161,17 +161,25 @@ main:
 
 ## Exemplo de syscalls:
 **Imprimir string (código 4 em a0):**
-    a0 = 4: Imprimir uma string.
-    O endereço da string é esperado no registrador a1.
+
+a0 = 4: Imprimir uma string.
+
+O endereço da string é esperado no registrador a1.
 
 **Imprimir número inteiro (código 1 em a0):**
-    a0 = 1: Imprimir um número inteiro.
-    O número a ser impresso está em a1 (não em a0 nesse caso).
+
+a0 = 1: Imprimir um número inteiro.
+
+O número a ser impresso está em a1 (não em a0 nesse caso).
 
 **Encerrar o programa (código 10 em a0):**
-    a0 = 10: Finalizar a execução do programa.
-    Não importa o valor em a1, o código apenas encerra o programa.
+
+a0 = 10: Finalizar a execução do programa.
+
+Não importa o valor em a1, o código apenas encerra o programa.
 
 **Leitura de inteiro (código 5 em a0):**
-    a0 = 5: Ler um número inteiro do teclado.
-    O número lido será colocado em a0 (o mesmo registrador).
+
+a0 = 5: Ler um número inteiro do teclado.
+
+O número lido será colocado em a0 (o mesmo registrador).
