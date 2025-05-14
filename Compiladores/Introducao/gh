@@ -1,0 +1,126 @@
+#ifndef AST_H
+#define AST_H
+
+typedef enum { TIPO_INT, TIPO_FLOAT } Tipo; // eh uma label oq for declarado como Tipo var
+                                            // essa vafr vai ser sempre tipo_int ou tipo_float
+
+typedef struct noAST { // estrutura do no: operador, valor, nome, tipo, ponteiro p esq, ponteiro p dir
+    char operador; // se for um + ele vai ser salvo em op
+    int valor; // se for um int ou float ele vai ser salvo em valor
+    char nome[32]; // se for um str vai ser salvo em nome, variaveis como x, y... 
+    Tipo tipo; // deixa claro se o valor eh int ou float, qnd usamos nome -> x = 6 -> nome:x tipo:tipo_int
+    struct noAST *esquerda; 
+    struct noAST *direita;
+} NoAST;
+
+NoAST *criarNoNum(int val); // cria um no pra num -> aceita so o int
+NoAST *criarNoId(char *nome, Tipo tipo); // cria um no pra um id -> tem nome (da variavel:x,y..) e tipo: int ou float
+                                        // no id precisamos passar o tipo, os outros n interessa ent botamos qualquer coisa op (int sabemos sempre q eh int)
+NoAST *criarNoOp(char op, NoAST *esq, NoAST *dir); // cria um no pro operado -> 
+                                                    //tem o operador e um point p cada no pq um 
+                                                    //op nunca ta sozinho
+void imprimirAST(NoAST *no);
+char* gerarTAC(NoAST *no);
+
+#endif
+
+/*
+        =
+       / \
+      x   +
+         / \
+        a   *
+           / \
+          b   c
+
+*/
+/* 
+um op sempre vai apontar pra dois
+um num nunca aponta p nada
+um id nunca aponta p nada
+*/
+
+/*
+esse arquivo configura as arvores, no primeiro a gnt definiu a estrutura geral do no
+e criou nos pra cada coisa: int, op, id...
+nesse arq vamos configura oq o no int recebe e onde... etc
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "ast.h"
+
+static int temp_id = 0;
+
+// no ast.h criasmo o criarnonum passando apenas um int val
+// comecamos recebendo ela aqui entre os ()
+NoAST *criarNoNum(int val) {
+    NoAST *no = malloc(sizeof(NoAST)); // salvamos espaco p no na memoria
+    no->valor = val; // o label valor vai valer val
+    no->nome[0] = '\0'; // o rest vale vazio, null ou 0, depende do q eh
+    no->operador = 0;
+    no->esquerda = no->direita = NULL;
+    no->tipo = TIPO_INT; // se eh int colocamos aq como int
+    return no;
+}
+
+NoAST *criarNoId(char *nome, Tipo tipo) { // passamos tipo e nome e recebemos aq
+    NoAST *no = malloc(sizeof(NoAST)); //salva na memoria
+    strcpy(no->nome, nome); // passa nome p nome
+    no->operador = 0; // o resto fica null
+    no->valor = 0;
+    no->esquerda = no->direita = NULL;
+    no->tipo = tipo; // tipo eh o tipo q passamos
+    return no;
+}
+
+NoAST *criarNoOp(char op, NoAST *esq, NoAST *dir) { // recebe o op, e dois ponteiros p cada coisa
+    NoAST *no = malloc(sizeof(NoAST)); // salva na memoria
+    no->operador = op; // op vale op
+    no->esquerda = esq; // no esq aponta p esq e direito p direito
+    no->direita = dir; // o resto eh null
+    no->valor = 0;
+    no->nome[0] = '\0';
+    no->tipo = TIPO_INT; // eh int pq decidimos assim
+    return no;
+}
+
+void imprimirAST(NoAST *no) { // imrpime arvore
+    if (!no) return; //se for null bate e volta, recursao
+    if (no->operador) { // se o no tiver operador valido, esse no eh um op vamos imrpimir ele aq
+        printf("(");
+        imprimirAST(no->esquerda); // vai p no da eqr, recursivo
+        printf(" %c ", no->operador); // vai p atual (meio)
+        imprimirAST(no->direita); // vai p da direita recursivo
+        printf(")");
+    } else if (strlen(no->nome) > 0) { // se no nome tiver comprimento maior q 0 ele eh id, imprimimos ele
+        printf("%s", no->nome); // printa ele
+    } else {
+        printf("%d", no->valor); // se for algo diferente (num) a gnt imprime ele em valor
+    }
+}
+
+char* novaTemp() {
+    static char nome[10];
+    sprintf(nome, "t%d", temp_id++);
+    return strdup(nome);
+}
+
+char* gerarTAC(NoAST *no) {
+    if (!no) return NULL;
+
+    if (!no->operador) {
+        if (strlen(no->nome) > 0) return strdup(no->nome);
+        char *tmp = malloc(10);
+        sprintf(tmp, "%d", no->valor);
+        return tmp;
+    }
+
+    char *esq = gerarTAC(no->esquerda);
+    char *dir = gerarTAC(no->direita);
+    char *tmp = novaTemp();
+    printf("%s = %s %c %s\n", tmp, esq, no->operador, dir);
+    free(esq);
+    free(dir);
+    return tmp;
+}
